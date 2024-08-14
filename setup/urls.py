@@ -22,4 +22,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('galeria.urls')),
+    path('', include('usuarios.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # Para servir arquivos de mídia, para passar arquivos de mídia para o servidor de desenvolvimento, Qualquer midia vai para esse pasta? Sim, qualquer arquivo de mídia vai para essa pasta.
