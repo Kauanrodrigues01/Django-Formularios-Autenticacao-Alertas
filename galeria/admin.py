@@ -6,7 +6,7 @@ class ListandoImagens(admin.ModelAdmin):
     list_display = ('id', 'nome', 'categoria', 'legenda', 'descricao', 'publicada') # Campos a serem exibidos
     list_display_links = ('id', 'nome') # Links para editar
     search_fields = ('nome',) # Campo de busca
-    list_filter = ('categoria',) # Filtro
+    list_filter = ('categoria', 'user') # Filtro
     list_editable = ('publicada',) # Editar na lista
     list_per_page = 15  # Paginação
     

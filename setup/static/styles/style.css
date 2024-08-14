@@ -383,7 +383,7 @@ table {
     cursor: pointer;
 }
 
-.alert{
+.alert {
     --bs-alert-bg: transparent;
     --bs-alert-padding-x: 1rem;
     --bs-alert-padding-y: 1rem;
@@ -401,14 +401,24 @@ table {
     border-radius: var(--bs-alert-border-radius);
 }
 
-.alert-success{
-    --bs-alert-bg: #D9D9D9;
-    --bs-alert-color: #0D6EFD;
-    --bs-alert-border-color: #0D6EFD;
+.alert-success {
+    --bs-alert-color: #0f5132;
+    --bs-alert-bg: #d1e7dd;
+    --bs-alert-border-color: #badbcc;
 }
 
-.alert-error{
+.alert-danger {
     --bs-alert-bg: #D9D9D9;
     --bs-alert-color: #DC3545;
     --bs-alert-border-color: #DC3545;
+}
+
+.msg-error-form{
+    color: red;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+#messages{
+    margin: 0 !important;
 }

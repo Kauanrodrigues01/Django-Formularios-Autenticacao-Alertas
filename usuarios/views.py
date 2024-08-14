@@ -32,23 +32,31 @@ def login(request):
 def cadastro(request):
     form = CadastroForms()
     
-    if request.method == 'POST': # Verifica se o método é POST, ou seja, se o formulário foi enviado
-        form = CadastroForms(request.POST) # Pega os dados do formulário e passa para a variável form
+    if request.method == 'POST':
+        form = CadastroForms(request.POST)
         
         if form.is_valid():
-            if form['senha'].value() != form['confirmar_senha'].value(): # Verifica se as senhas são iguais
-                messages.error(request, 'As senhas não são iguais')
-                return redirect('cadastro') # redireciona para a rota chamada 'cadastro'
-            
             nome = form['nome_cadastro'].value()
             email = form['Email'].value()
             senha = form['senha'].value()
+            confirmar_senha = form['confirmar_senha'].value()
             
+            # Verificar se as senhas são iguais
+            if senha != confirmar_senha:
+                messages.error(request, 'As senhas não são iguais')
+                return redirect('cadastro')
             
-            if User.objects.filter(username=nome).exists(): # Verifica se o usuário já existe
+            # Verifica se já existe um cadastro com aquele email
+            if User.objects.filter(email=email).exists():
+                messages.error(request, 'Email já cadastrado')
+                return redirect('cadastro')
+            
+            # Verificar se o usuário já existe
+            if User.objects.filter(username=nome).exists():
                 messages.error(request, 'Usuário já existe')
                 return redirect('cadastro')
             
+            # Criar o novo usuário
             usuario = User.objects.create_user(
                 username=nome, 
                 email=email, 

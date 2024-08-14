@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -19,6 +20,13 @@ class Imagem(models.Model):
     caminho_imagem = models.ImageField(upload_to='fotos/%Y/%m/%d/', blank=True)
     publicada = models.BooleanField(default=False)
     data_imagem = models.DateField(null=False, blank=False, default=datetime.datetime.now)
+    user = models.ForeignKey(
+        to=User, 
+        on_delete=models.SET_NULL, 
+        null=True,
+        blank=False,
+        related_name='user',
+    )
 
     def __str__(self):
         return self.nome
