@@ -86,6 +86,10 @@ Siga estas etapas para configurar o projeto localmente:
 7. **Execute as migrações do banco de dados**
 
     ```bash
+    python manage.py makemigrations
+    ```
+    
+    ```bash
     python manage.py migrate
     ```
 
